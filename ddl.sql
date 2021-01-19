@@ -1,0 +1,36 @@
+USE  PretendDB
+GO
+
+CREATE TABLE Employee
+(
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName VARCHAR (40) NOT NULL,
+    LastName VARCHAR (40) NOT NULL,
+    SSN VARCHAR (15) NOT NULL,
+    DeptID INT NOT NULL
+    FOREIGN KEY(DeptID) REFERENCES Department(ID)
+);
+GO
+
+CREATE TABLE Department
+(
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    Name VARCHAR (30) NOT NULL,
+    Location VARCHAR (50) NOT NULL
+
+);
+GO
+
+CREATE TABLE EmpDetails
+(
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    EmployeeID INT NOT NULL,
+    FOREIGN KEY(EmployeeID) REFERENCES Employee(ID),
+    Salary INT NOT NULL,
+    Address1 VARCHAR (50) NOT NULL,
+    Address2 VARCHAR (50),
+    City VARCHAR (30) NOT NULL,
+    State VARCHAR (20) NOT NULL,
+    County VARCHAR (30) NOT NULL
+);
+GO
